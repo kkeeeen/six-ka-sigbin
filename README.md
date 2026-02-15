@@ -1,8 +1,8 @@
 💐Resource flowers gift website for someone
 
-# Flowers for Someone 🌸
+# 67676767
 
-Welcome to Flowers for Someone! 🌼 This repository hosts the codebase for a charming website dedicated to the art of gifting flowers to your loved ones. Express your sentiments with the beauty of nature!
+Welcome to 67676767! This repository hosts the codebase for the project previously named "Flowers for Someone." The site is unchanged; only the project name has been updated.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -11,7 +11,7 @@ Welcome to Flowers for Someone! 🌼 This repository hosts the codebase for a ch
 
 ## Introduction
 
-Flowers for Someone is your ultimate destination for heartfelt floral gifting. Whether it's a special occasion or just to brighten someone's day, our website offers a delightful of flower arrangements, bouquets, and personalized messages.
+This project is a small static site with animated flowers and a local media player. The content and assets are unchanged; only the project name was updated to `67676767`.
 
 ## Technologies Used
 

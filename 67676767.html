@@ -9,12 +9,21 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Document Title -->
-  <title>FLOWERS</title>
+  <title>67676767</title>
 </head>
 
 <body class="not-loaded">
   <!-- Background -->
   <div class="night"></div>
+
+  <!-- Side arrow button (opens video in a new window) -->
+  <a href="rick.html?play=1" id="sideArrow" class="side-arrow" aria-label="Open video">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M9 18l6-6-6-6"></path>
+    </svg>
+  </a>
+
+  
 
   <!-- Flower -->
   <div class="flowers">
@@ -316,6 +325,24 @@
 
   <!-- Title -->
   <h1 class="title"><span id="title"></span></h1>
+  
+  <script>
+    // Open video in a new window using the user's click gesture so audio can start
+    (function(){
+      const el = document.getElementById('sideArrow');
+      if (!el) return;
+      el.addEventListener('click', function(e){
+        const opts = 'toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,width=960,height=540';
+        const w = window.open('', '_blank', opts);
+        if (!w) return;
+        const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Video + Audio</title><style>html,body{height:100%;margin:0;background:#000;display:flex;align-items:center;justify-content:center}video{width:100%;height:100%;object-fit:contain;background:#000}.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.play-btn{pointer-events:auto;background:rgba(0,0,0,0.6);color:#fff;border:0;padding:12px 18px;border-radius:8px;font-size:16px;cursor:pointer}.muted-note{position:fixed;left:12px;bottom:12px;color:#fff;font-size:13px;opacity:0.95}</style></head><body><video id="v" src="videos/video.mp4" playsinline autoplay muted></video><audio id="a" src="videos/audio.mp3" loop></audio><div class="overlay"><button id="playBtn" class="play-btn">Play ▶</button><div class="muted-note">If audio doesn't start, click Play</div></div><script>(function(){const v=document.getElementById('v');const a=document.getElementById('a');const btn=document.getElementById('playBtn');let userStarted=false;function setBtn(paused){btn.textContent=paused? 'Play ▶':'Pause ⏸';}async function tryAutoStart(){try{v.loop=true;await v.play();}catch(e){}try{await a.play();a.pause();}catch(e){}setBtn(true);}async function startPlayback(){try{if(!isFinite(v.currentTime)) v.currentTime=0;a.currentTime=v.currentTime;await Promise.all([v.play().catch(()=>{}), a.play().catch(()=>{})]);a.muted=false;userStarted=true;setBtn(false);try{btn.style.display='none';}catch(e){} }catch(e){console.warn(e);}}async function pausePlayback(){try{v.pause();a.pause();userStarted=false;setBtn(true);}catch(e){}}btn.addEventListener('click',function(){if(v.paused||a.paused||!userStarted) startPlayback(); else pausePlayback();});function syncLoop(){try{const d=v.currentTime - a.currentTime;const absd=Math.abs(d);if(absd>0.5){a.currentTime=v.currentTime;a.playbackRate=1;}else if(absd>0.02){let rate=1 + (d*0.1);rate=Math.max(0.95,Math.min(1.05,rate));a.playbackRate=rate;}else{a.playbackRate=1;}}catch(e){}requestAnimationFrame(syncLoop);}v.addEventListener('play',()=>setBtn(false));a.addEventListener('play',()=>setBtn(false));v.addEventListener('pause',()=>setBtn(true));a.addEventListener('pause',()=>setBtn(true));tryAutoStart();requestAnimationFrame(syncLoop);})();<\/script></body></html>`;
+        w.document.open();
+        w.document.write(html);
+        w.document.close();
+        e.preventDefault();
+      });
+    })();
+  </script>
 </body>
 
 </html>
